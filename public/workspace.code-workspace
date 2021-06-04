@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../javascript"
+		},
+		{
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"workbench.editorAssociations": []
+	}
+}

@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+
+import React, { Component } from 'react'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Item from './components/Item'
 import './App.css';
+import { nanoid } from 'nanoid'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    todos: []
+  }
+  addTodo = (data) => {
+    console.log('header from:', data)
+    const { todos } = this.state;
+    const newTodos = {
+      id: nanoid(),
+      name: data,
+      done: false
+    }
+    this.setState({
+      todos: [ newTodos, ...todos ]
+    })
+  }
+  render() {
+    const { todos } = this.state;
+    return (
+      <div className="App">
+        <Header addTodo={ this.addTodo }></Header>
+        {
+          todos.map(item => {
+            return (<Item key={ item.id } { ...item }></Item>)
+          })
+        }
+        <Footer></Footer>
+      </div>
+    )
+  }
 }
-
-export default App;
