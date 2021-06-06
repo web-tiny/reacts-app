@@ -7,31 +7,39 @@ export default class Item extends Component {
   }
   // 对props进行限制
   static propTypes = {
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    deleteTodo: PropTypes.func
   }
-  handleMouseEnter = () => {
-    this.setState({ visible: true })
+  mouseEnterLeave = (boolean) => {
+    return () => {
+      this.setState({ visible: boolean })
+    }
   }
-  handleMouseLeave = () => {
-    this.setState({ visible: false })
+  deleteTodo = (id) => {
+    this.props.deleteTodo(id)
+  }
+  onChangeCheckbox = (e) => {
+    this.props.updateTodo({ id: this.props.id, done: e.target.checked })
   }
   render() {
     const { visible } = this.state
-    const { name } = this.props
+    const { name, id, done } = this.props
     return (
       <div className="item"
         style={{ background: visible ? '#dcdfe6' : '#fff' }}
-        onMouseEnter={ this.handleMouseEnter }
-        onMouseLeave={ this.handleMouseLeave }>
+        onMouseEnter={ this.mouseEnterLeave(true) }
+        onMouseLeave={ this.mouseEnterLeave(false) }>
         <label>
-          <input name="Fruit" type="checkbox" value="" />
+          <input type="checkbox" checked={done} onChange={this.onChangeCheckbox}/>
           { name } 
         </label>
         <button
           className="button"
+          onClick ={ ()=> this.deleteTodo(id) }
           style={{
             display: visible ? 'block' : 'none' 
-          }}>清除
+          }}>删 除
         </button>
       </div>
     )

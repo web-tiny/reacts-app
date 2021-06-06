@@ -2,16 +2,19 @@
 import React, { Component } from 'react'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import Item from './components/Item'
+import List from './components/List'
 import './App.css';
 import { nanoid } from 'nanoid'
 
 export default class App extends Component {
   state = {
-    todos: []
+    todos: [
+      { id: '1', done: false, name: '吃法' },
+      { id: '2', done: false, name: '睡觉' },
+    ]
   }
+  // 添加todo
   addTodo = (data) => {
-    console.log('header from:', data)
     const { todos } = this.state;
     const newTodos = {
       id: nanoid(),
@@ -22,17 +25,56 @@ export default class App extends Component {
       todos: [ newTodos, ...todos ]
     })
   }
+  // 更新todo
+  updateTodo = (current) => {
+    const { todos } = this.state;
+    const updatedTodos = todos.map(item => {
+      if (item.id === current.id) {
+        item.done = current.done
+      }
+      return item
+    })
+    this.setState({ todos: updatedTodos })
+  }
+  // 删除todo
+  deleteTodo = (id) => {
+    const { todos } = this.state;
+    if (window.confirm('are you sure delete id ?')) {
+      const newTodos = todos.filter(item => item.id !== id);
+      this.setState({ todos: newTodos  })
+    }
+  }
+  // 全选
+  allChecked = (value) => {
+    const { todos } = this.state;
+    const newTodos = todos.map(item => {
+      item.done = value
+      return item
+    })
+    this.setState({ todos: newTodos })
+  }
+  // 清除所有已完成的任务
+  handleClearDone = () => {
+    const { todos } = this.state;
+    const newTodos = todos.filter(item => !item.done);
+    this.setState({ todos: newTodos })
+  }
   render() {
     const { todos } = this.state;
+    console.log(todos.length)
     return (
       <div className="App">
         <Header addTodo={ this.addTodo }></Header>
-        {
-          todos.map(item => {
-            return (<Item key={ item.id } { ...item }></Item>)
-          })
-        }
-        <Footer></Footer>
+        <List
+          todos = { todos }
+          deleteTodo={this.deleteTodo}
+          updateTodo={this.updateTodo}>
+        </List>
+        <Footer
+          allChecked={this.allChecked}
+          todos={todos}
+          handleClearDone={this.handleClearDone}>
+        </Footer>
       </div>
     )
   }
