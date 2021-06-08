@@ -428,8 +428,43 @@
     } catch(err) {
       console.log(err)
     }
+    ```
     
-    // begin 74
+13. react 路由
+
+    >react-router-dom  web独有的路由库
+    >路由原理: 改变url,触发路由监听器,加载对应的组件
+    >
+    >路由组件与一般组件的区别:
+    >
+    >>1. 接收到的props不同:
+    >>   * 一般组件: 传递啥, 就接收啥
+    >>   * 路由组件: 接收到三个固定的属性
+    >>     1. history: 
+    >>        * go: f
+    >>        * goBack: f
+    >>        * goForward: f
+    >>        * push: f
+    >>        * Replace: f
+    >>     2. location:
+    >>        * pathname
+    >>        * Search
+    >>        * state
+    >>     3. match
+    >>        * params
+    >>        * path
+    >>        * Url
+    >>2. 写法不同
+    >>   * 一般组件: <Demo />
+    >>   * 路由组件: <Route path="./demo" component={Demo}/>
+    >>3. 存放位置不同
+    >>   * 一般组件: components
+    >>   * 路由组件: pages
+
+    ```jsx
+    
+    
+    
     ```
 
     

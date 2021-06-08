@@ -1,0 +1,15 @@
+.router-index {
+  margin-top: 10px;
+  width: 200px;
+  display: flex;
+}
+.router {
+  width: 80px;
+  height: 40px;
+  display: block;
+  border: 1px solid #666;
+}
+.sunce {
+  background: bisque;
+  color: #fff;
+}

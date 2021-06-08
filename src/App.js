@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import List from './components/List'
+import RouterIndex from './pages/RouterIndex'
 import './App.css';
 import { nanoid } from 'nanoid'
 
@@ -75,6 +76,7 @@ export default class App extends Component {
           todos={todos}
           handleClearDone={this.handleClearDone}>
         </Footer>
+        <RouterIndex />
       </div>
     )
   }
