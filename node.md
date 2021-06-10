@@ -432,10 +432,10 @@
     
 13. react 路由
 
-    >react-router-dom  web独有的路由库
-    >路由原理: 改变url,触发路由监听器,加载对应的组件
+    >1. react-router-dom  web独有的路由库
+    >2. 路由原理: 改变url,触发路由监听器,加载对应的组件
     >
-    >路由组件与一般组件的区别:
+    >3. 路由组件与一般组件的区别:
     >
     >>1. 接收到的props不同:
     >>   * 一般组件: 传递啥, 就接收啥
@@ -460,11 +460,28 @@
     >>3. 存放位置不同
     >>   * 一般组件: components
     >>   * 路由组件: pages
-
-    ```jsx
+    >
+    >4. Switch组件 可以提交路由匹配效率
+    >
+    >   ```jsx
+    >   // 只会展示 Home组件
+    >   import {Route,  Switch } from 'react-router-dom'
+    >   <Switch>
+    >     <Route path="/about" component={About}</Route>
+    >     <Route path="/home" component={Home}></Route>    
+    >     <Route path="/home" component={Test}></Route>
+    >   </Switch>
+    >   ```
+    >
+    >5. 解决多级路径刷新页面丢失的问题
+    >
+    >   1. public/index.html 中引入样式不写:  ./  写 / (常用) 
+    >   2. public/index.html 中引入样式不写:  ./  写 : %PUBLIC_URL% (常用)
+    >   3. 使用HashRouter
+    >
+    >6. 嵌套路由
+    >
+    >   1. 注册子路由的时候要写上父路由的path值
+    >   2. 路由匹配是按照注册路由的顺序进行的(父路由,子路由)
     
-    
-    
-    ```
-
     
