@@ -463,25 +463,86 @@
     >
     >4. Switch组件 可以提交路由匹配效率
     >
-    >   ```jsx
-    >   // 只会展示 Home组件
-    >   import {Route,  Switch } from 'react-router-dom'
-    >   <Switch>
-    >     <Route path="/about" component={About}</Route>
-    >     <Route path="/home" component={Home}></Route>    
-    >     <Route path="/home" component={Test}></Route>
-    >   </Switch>
-    >   ```
+    >  ```jsx
+    >  // 只会展示 Home组件
+    >  import {Route,  Switch } from 'react-router-dom'
+    >  <Switch>
+    >    <Route path="/about" component={About}</Route>
+    >    <Route path="/home" component={Home}></Route>    
+    >    <Route path="/home" component={Test}></Route>
+    >  </Switch>
+    >  ```
     >
     >5. 解决多级路径刷新页面丢失的问题
     >
-    >   1. public/index.html 中引入样式不写:  ./  写 / (常用) 
-    >   2. public/index.html 中引入样式不写:  ./  写 : %PUBLIC_URL% (常用)
-    >   3. 使用HashRouter
+    > 6. public/index.html 中引入样式不写:  ./  写 / (常用) 
     >
-    >6. 嵌套路由
+    >  7. public/index.html 中引入样式不写:  ./  写 : %PUBLIC_URL% (常用)
+    >
+    >  8. 使用HashRouter
+    >
+    >9. 嵌套路由
     >
     >   1. 注册子路由的时候要写上父路由的path值
+    >
     >   2. 路由匹配是按照注册路由的顺序进行的(父路由,子路由)
+    >
+    >10. 向路由传递参数 (路由组件才有路由相关的api)
+    >
+    >    ```jsx
+    >    // 1. params 参数
+    >    // 1):路由链接(携带参数)
+    >    <Link to={`/home/message/detail/${item.id}/${item.title}`}>{ item.title }</Link>
+    >    // 2):注册路由(声明接收)
+    >    <Route path="/home/message/detail/:id/:title" component={Detail}></Route>
+    >    // 3):接收params参数
+    >    const { id, title } = this.props.match.params
+    >    
+    >    // 2. 第二种方式: query参数
+    >    // 1): 路由参数, 无需注册,
+    >    <Link to={`/home/message/detail?id=${item.id}&title=${item.title}`}>{ item.title }</Link>
+    >    <Route path="/home/message/detail/" component={Detail}></Route>
+    >    
+    >    // 2): 接收query参数
+    >    // 借助 querystring 库, react 已经自动安装
+    >    import qs from 'querystring'
+    >    const searchData = qs.parse(this.props.location.search.slice(1))
+    >    const { id, title } = searchData
+    >    
+    >    // 3. 向路由组件传递 state 参数, 不在url参数里
+    >    // 1):
+    >    <Link to={{pathname: '/home/message/detail', state: { id: item.id, title: item.title }}}>{ item.title }</Link>
+    >    // 2): 正常注册路由即可
+    >    <Route path="/home/message/detail/" component={Detail}></Route>
+    >    // 3): 接收参数
+    >    const {id, title} = this.props.location.state
+    >    
+    >    // 4. 编程式路由,其实就是用history上的api
+    >    // this.props.history.push/replace(url, state) // state: {}
+    >    ```
+    >
+    >11. 路由中 withRouter 的使用
+    >
+    >    ```jsx
+    >    import React, { Component } from 'react'
+    >    import { withRouter } from "react-router-dom"
+    >    class A extends Component {}
+    >    export default withRouter(A)
+    >    // withRouter 可以加工一般组件,让一般组件具备路由组件所特有的API、
+    >    // withRouter 的返回值是一个新组件
+    >    ```
+    >
+    >12. BrowserRouter 与 HashRouter 的区别
+    >
+    >    1. 底层原理不一样:
+    >       * BrowserRouter 使用的是H5 的history api, 不兼容ie9及以下版本
+    >       * HashRouter 使用的是 url 的哈希值
+    >    2. path 表现形式不一样:
+    >       * BrowserRouter 的路径中没有# , eg: localhost:3000/demo/test
+    >       * HashRouter 路径中包含 # , eg:  localhost:3000/#/demo/test
+    >    3. 刷行后对路由state参数的影响:
+    >       * BrowserRouter 没有任何影响,因为 state 保存着在 history 对象中
+    >       * **HashRouter 刷行后会导致路由state参数的丢失, 因为 HashRouter 没有 history api**
+    >    4. 备注: HashRouter 可以用于解决一些路径错误相关的问题.
     
-    
+14. UI组件库, material-ui, ant-design  p97

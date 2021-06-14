@@ -8,10 +8,10 @@ export default class Home extends Component {
     return (
       <div>
         <h1>home components</h1>
-        <div>
+        <span>
           <MyNavLink to="/home/news">News</MyNavLink>
           <MyNavLink to="/home/message">Message</MyNavLink>
-        </div>
+        </span>
         <Switch>
           <Route path="/home/news" component={News}></Route>
           <Route path="/home/message" component={Message}></Route>

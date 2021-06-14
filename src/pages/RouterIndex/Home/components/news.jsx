@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-
+import { Button } from 'antd';
 export default class News extends Component {
   render() {
     return (
       <div>
-        news
+        <Button type="primary">Primary</Button>
       </div>
     )
   }
