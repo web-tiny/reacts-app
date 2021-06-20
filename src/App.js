@@ -6,6 +6,9 @@ import List from './components/List'
 import RouterIndex from './pages/RouterIndex'
 import './App.css';
 import { nanoid } from 'nanoid'
+import ReduxExample from './pages/reduxExample'
+import ReactReduxExample from './containers/Count'
+import store from './redux/store'
 
 export default class App extends Component {
   state = {
@@ -62,7 +65,6 @@ export default class App extends Component {
   }
   render() {
     const { todos } = this.state;
-    console.log(todos.length)
     return (
       <div className="App">
         <Header addTodo={ this.addTodo }></Header>
@@ -77,6 +79,9 @@ export default class App extends Component {
           handleClearDone={this.handleClearDone}>
         </Footer>
         <RouterIndex />
+        <ReduxExample />
+        {/* 给容器组件传递 store */}
+        <ReactReduxExample store={store}/>
       </div>
     )
   }
