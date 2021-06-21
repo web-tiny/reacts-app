@@ -58,4 +58,54 @@
    2. 用于操作状态的方法
 5. 备注: 容器给 UI 传递: 状态,操作状态的 方法, 均通过props 传递
 
-Todo: p106
+
+
+### 4. 求和案例 react-redux 基本使用
+
+1. 明确两个概念
+
+   1. UI组件, 不能使用任何redux的api,只负责页面的呈现,交互等.
+   2. 容器组件: 负责和redux通行,将结果交给UI组件
+
+2. 如何创建一个容器组件-----靠react-redux 的 connect 函数
+
+   connect (mapStateToProps, mapDispatchToProps)(UI组件)
+
+   ​	--mapStateToProps: 映射状态, 返回值是一个对象
+
+   ​	--mapDispatchToProps: 映射操作状态的方法,返回值是一个对象
+
+3. 备注: 
+
+   1. 容器组件中的store是靠props 传进去的, 而不是在容器组件中直接引入
+   2. **mapDispatchToProps 也可以是一个对象, react-redux 自动dispatch**
+
+### 5. 求和案例 react-redux 优化
+
+1. 容器组件 和 UI 组件整合成一个文件
+
+2. 无需自己给容器组件传递store, 给 <App /> 包括一个<Provider store={store} /> 即可
+
+3. 使用 react-redux 后,不用再自己检测 redux 中状态的变化, 容器组件可以自动完成的这个工作.
+
+4. mapDispatchToProps  可以简写成一个对象
+
+5. 一个组件要 和 redux ‘打交道’ 要经过哪几步 ?
+
+   1. 定义好 UI 组件--- 不暴露
+
+   2. 引入connect 生成一个容器组件, 并暴露出去,写法如下:
+
+      ```jsx
+      export default connect(
+        state => ({ count: state }),
+        // mapDispatchToProps 的简写, react-redux 自动 dispatch
+        {
+          [INCREAMENT]: increment,
+          [DECREAMENT]: decrement,
+          incrementAsync
+        }
+      )(Count)
+      ```
+
+   3. 在 UI 组件中通过this.props.xxx 读取和操作状态

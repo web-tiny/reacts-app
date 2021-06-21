@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import './index.css'
 import store from '../../redux/store'
-import { increment, decrement, incrementAsync } from '../../redux/count_action.js'
+import { increment, decrement, incrementAsync } from '../../redux/actions/count.js'
 
 export default class Count extends Component {
   // state = {
   //   count: 1
   // }
   //检测 redux中 状态的变化,只要变化就调用render
-  // componentDidMount() {
-  //   store.subscribe(() => {
-  //     this.setState({})
-  //   })
-  // }
+  componentDidMount() {
+    store.subscribe(() => {
+      this.setState({})
+    })
+  }
   increment = () => {
     // const { count } = this.state
     const { value } = this.selectValue

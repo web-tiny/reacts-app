@@ -8,7 +8,7 @@ import './App.css';
 import { nanoid } from 'nanoid'
 import ReduxExample from './pages/reduxExample'
 import ReactReduxExample from './containers/Count'
-import store from './redux/store'
+// import store from './redux/store'
 
 export default class App extends Component {
   state = {
@@ -81,7 +81,7 @@ export default class App extends Component {
         <RouterIndex />
         <ReduxExample />
         {/* 给容器组件传递 store */}
-        <ReactReduxExample store={store}/>
+        <ReactReduxExample/>
       </div>
     )
   }

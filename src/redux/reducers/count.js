@@ -5,7 +5,7 @@
  * 1. 之前的状态,preState
  * 2. 动作对象 action
  */
-import { INCREAMENT, DECREAMENT } from './constant'
+import { INCREAMENT, DECREAMENT } from '../constant'
 
 let initData = 0
 export default function countReducer (preState = initData, action) {

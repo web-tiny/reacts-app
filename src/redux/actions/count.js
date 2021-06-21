@@ -1,5 +1,5 @@
 // 创建 anction 对象
-import { INCREAMENT, DECREAMENT } from './constant'
+import { INCREAMENT, DECREAMENT } from '../constant'
 // import store from './store'
 export const increment = data => ({ type: INCREAMENT, data })
 export const decrement = data => ({ type: DECREAMENT, data })
