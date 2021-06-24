@@ -25,7 +25,7 @@ export default class Count extends Component {
     const { count } = this.props
     return (
       <div>
-        <h1>react-redux写法</h1>
+        <h2>react-redux写法</h2>
         <h4>当前求和为: { count }</h4>
         <select ref={ c => this.selectValue = c }>
           <option value="1">1</option>

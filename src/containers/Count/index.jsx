@@ -34,10 +34,10 @@ class Count extends Component {
   }
   
   render() {
-    const { count } = this.props
+    const { count, allPerson } = this.props
     return (
       <div>
-        <h1>react-redux写法</h1>
+        <h1>react-redux写法: 下方人员总数: { allPerson.length }</h1>
         <h4>当前求和为: { count }</h4>
         <select ref={ c => this.selectValue = c }>
           <option value="1">1</option>
@@ -68,7 +68,10 @@ class Count extends Component {
 // 暴露一个 conteiner 组件
 // export default connect(mapStateToProps, mapDispatchToProps)(CountUI)
 export default connect(
-  state => ({ count: state }),
+  state => ({ 
+    count: state.count,
+    allPerson: state.person
+  }),
   // mapDispatchToProps 的简写, react-redux 自动 dispatch
   {
     [INCREAMENT]: increment,

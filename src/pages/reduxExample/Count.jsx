@@ -43,10 +43,11 @@ export default class Count extends Component {
   }
   
   render() {
+    const { count } = store.getState()
     return (
       <div>
         <h1>redux 写法</h1>
-        <h4>当前求和为: { store.getState() }</h4>
+        <h4>当前求和为: { count }</h4>
         <select ref={ c => this.selectValue = c }>
           <option value="1">1</option>
           <option value="2">2</option>
