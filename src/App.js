@@ -9,7 +9,7 @@ import { nanoid } from 'nanoid'
 import ReduxExample from './pages/reduxExample'
 import ReactReduxExample from './containers/Count'
 import Person from './pages/person'
-// import store from './redux/store'
+import SetStateIndex from './pages/setState'
 
 export default class App extends Component {
   state = {
@@ -67,23 +67,26 @@ export default class App extends Component {
   render() {
     const { todos } = this.state;
     return (
-      <div className="App">
-        <Header addTodo={ this.addTodo }></Header>
-        <List
-          todos = { todos }
-          deleteTodo={this.deleteTodo}
-          updateTodo={this.updateTodo}>
-        </List>
-        <Footer
-          allChecked={this.allChecked}
-          todos={todos}
-          handleClearDone={this.handleClearDone}>
-        </Footer>
+      <div className="second-root">
+        <div className="App">
+          <Header addTodo={ this.addTodo }></Header>
+          <List
+            todos = { todos }
+            deleteTodo={this.deleteTodo}
+            updateTodo={this.updateTodo}>
+          </List>
+          <Footer
+            allChecked={this.allChecked}
+            todos={todos}
+            handleClearDone={this.handleClearDone}>
+          </Footer>
+        </div>
         <RouterIndex />
         <ReduxExample />
         {/* 给容器组件传递 store */}
         <ReactReduxExample/>
         <Person />
+        <SetStateIndex x={2}></SetStateIndex>
       </div>
     )
   }

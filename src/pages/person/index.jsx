@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 class Person extends Component {
   subMite = () => {
     const {name, age} = this
-    this.props.add({
+    this.props.addPersion({
       id: nanoid(),
       name: name.value,
       age: age.value
@@ -40,11 +40,11 @@ class Person extends Component {
 }
 
 export default connect(
+  // 映射状态
   state => ({
     person: state.person,
     total: state.count
   }),
-  {
-    add: addPersion
-  }
+  // 映射操作状态的方法
+  { addPersion }
 )(Person)

@@ -13,7 +13,6 @@ const initPersion = [{
  * @returns 
  */
 export default function addPersion (preState = initPersion, action) {
-  console.log('persion reducer')
   const { type, data } = action
   switch (type) {
     case ADD_PERSON:

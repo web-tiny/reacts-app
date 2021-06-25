@@ -8,7 +8,6 @@
 // 引入connect 用于连接 UI 组件与 redux
 import { connect } from 'react-redux'
 import { increment, decrement, incrementAsync } from '../../redux/actions/count'
-import { INCREAMENT, DECREAMENT } from '../../redux/constant'
 import React, { Component } from 'react'
 import '../../pages/reactReduxExample/index.css'
 
@@ -73,9 +72,5 @@ export default connect(
     allPerson: state.person
   }),
   // mapDispatchToProps 的简写, react-redux 自动 dispatch
-  {
-    [INCREAMENT]: increment,
-    [DECREAMENT]: decrement,
-    incrementAsync
-  }
+  { increment, decrement, incrementAsync }
 )(Count)

@@ -1,5 +1,5 @@
 .App {
-  width: 50%;
+  width: 400px;
 }
 .input {
   height: 50px;
@@ -7,7 +7,7 @@
   border: 1px solid #999;
 }
 .item,.footer {
-  height: 30px;
+  height: 40px;
   width: 100%;
   border: 1px solid #999;
 }
@@ -20,4 +20,9 @@
 }
 .footer-total {
   margin-left: 15px;
+}
+.second-root {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
