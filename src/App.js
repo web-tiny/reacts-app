@@ -10,6 +10,8 @@ import ReduxExample from './pages/reduxExample'
 import ReactReduxExample from './containers/Count'
 import Person from './pages/person'
 import SetStateIndex from './pages/setState'
+import HooksComponent from './pages/hooks'
+import CoutextComponent from './pages/context'
 
 export default class App extends Component {
   state = {
@@ -87,6 +89,8 @@ export default class App extends Component {
         <ReactReduxExample/>
         <Person />
         <SetStateIndex x={2}></SetStateIndex>
+        <HooksComponent></HooksComponent>
+        <CoutextComponent></CoutextComponent>
       </div>
     )
   }
