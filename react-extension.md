@@ -67,5 +67,29 @@
 
 ### 4. Context: 一种组件间的通信方式
 
-P23
+### 5. 组件优化
+
+1. component的2个问题
+
+   1. 只要执行setState(), 即便不改变状态数据,组件也会重新render()===》效率低
+   2. 只要当前组件重新render(), 就会自动重新render子组件,纵使子组件没有用到父组件的任何数据 ====》效率低
+
+2. 效率高的做法: 只有当组件的state或props数据发生改变时才重新render()
+
+3. 问题原因: Component中的 shouldComponentUpdate()  总是返回true
+
+4. 解决:
+
+   1. 办法1: 重写 shouldComponentUpdate() 方法,  比较新旧state 或props 数据,如果有变化才返回 true, 如果没有返回 false
+
+   2. 办法2: 使用 PureComponent, 其重写了  shouldComponentUpdate() , 只有state 或 props 数据有变化才返回 true
+
+      注意: 
+
+      1. **只是进行 state 和 props 的浅比较, 如果只是数据对象内部数据变了, 会返回 false**
+      2. **不要直接修改state 数据, 而是要产生 新数据(解构复制)**
+
+   3. 项目中一般使用 PureComponent 来优化
+
+P24
 

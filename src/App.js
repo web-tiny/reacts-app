@@ -12,6 +12,7 @@ import Person from './pages/person'
 import SetStateIndex from './pages/setState'
 import HooksComponent from './pages/hooks'
 import CoutextComponent from './pages/context'
+import Optimize from './pages/optimize'
 
 export default class App extends Component {
   state = {
@@ -91,6 +92,7 @@ export default class App extends Component {
         <SetStateIndex x={2}></SetStateIndex>
         <HooksComponent></HooksComponent>
         <CoutextComponent></CoutextComponent>
+        <Optimize></Optimize>
       </div>
     )
   }
