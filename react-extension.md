@@ -91,5 +91,30 @@
 
    3. 项目中一般使用 PureComponent 来优化
 
-P24
+
+
+### 6. Render props(类似Vue中的插槽) chirldren props(eg: /pages/renderProps)
+
+
+
+### 7. 错误边界(容易发生错误的组件的父组件里处理可能出现的错误, eg: /pages/errorBoundry)
+
+
+
+### 8. 组件通信方式总结
+
+1. props: children props, render props
+2. 消息发布订阅: pubs-sub, event(C#) 等
+3. 集中式管理: redux, dva 等
+4. conText: 生产者-消费者模式
+
+比较好的搭配方式:
+
+* 父子组件: props
+
+* 兄弟组件: 集中式管理、消息订阅-发布
+
+* 祖孙组件: 消息订阅-发布、集中式管理, conText(开发用得少, 封装插件用得多)
+
+
 

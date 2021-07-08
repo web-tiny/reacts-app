@@ -13,6 +13,8 @@ import SetStateIndex from './pages/setState'
 import HooksComponent from './pages/hooks'
 import CoutextComponent from './pages/context'
 import Optimize from './pages/optimize'
+import RenderProps from './pages/renderProps'
+import ErrorBoundary from './pages/errorBoundry'
 
 export default class App extends Component {
   state = {
@@ -93,6 +95,8 @@ export default class App extends Component {
         <HooksComponent></HooksComponent>
         <CoutextComponent></CoutextComponent>
         <Optimize></Optimize>
+        <RenderProps></RenderProps>
+        <ErrorBoundary></ErrorBoundary>
       </div>
     )
   }
